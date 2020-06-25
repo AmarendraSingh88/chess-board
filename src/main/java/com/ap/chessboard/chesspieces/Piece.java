@@ -1,9 +1,16 @@
 package com.ap.chessboard.chesspieces;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import com.ap.chessboard.ChessBoard;
+import java.util.List;
 
-public interface Piece {
+public abstract class Piece {
 
-   ArrayList<String> getPossibleMovements();
+   abstract List<String> getPossibleMovements(ChessBoard chessBoard, int x, int y);
+
+   boolean isValidMove(int x, int y) {
+      if (x >= 0 && y >= 0 && x < 8 && y < 8){
+         return true;
+      }
+      return false;
+   }
 }
