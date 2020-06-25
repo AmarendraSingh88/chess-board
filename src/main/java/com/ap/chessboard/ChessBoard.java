@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * @author amarendra.singh
+ */
 public class ChessBoard {
-      private final String board[][] = {
+      private final String[][] board = {
               {"A8","B8","C8","D8","E8","F8","G8","H8"},
               {"A7","B7","C7","D7","E7","F7","G7","H7"},
               {"A6","B6","C6","D6","E6","F6","G6","H6"},
@@ -24,6 +27,13 @@ public class ChessBoard {
     String[] alphabet = {"A","B","C","D","E","F","G","H"};
 
     private void initializeChessBoard(int boardSize){
+        //Add Chess values in the given matrix based on chess board size (It will support the matrix upto 8 size)
+       /* for(int i=0; i<boardSize; i++){
+            for(int j=0; j<boardSize; j++){
+                board[j][i]= alphabet[i]+ Math.abs(j-boardSize);
+            }
+        }*/
+
         //Add chess value as key and coordinate as values
         for(int i=0; i<boardSize; i++){
             for(int j=0; j<boardSize; j++){

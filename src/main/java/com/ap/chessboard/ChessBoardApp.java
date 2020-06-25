@@ -3,9 +3,13 @@ package com.ap.chessboard;
 import com.ap.chessboard.chesspieces.*;
 import com.ap.chessboard.chesspieces.enumeration.ChessPiecesEnum;
 import com.ap.chessboard.exception.InvalidInputException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
+/**
+ * @author amarendra.singh
+ */
 public class ChessBoardApp {
 
     public static void main(String[] args){
@@ -21,7 +25,7 @@ public class ChessBoardApp {
             if(Objects.isNull(cords)){
                 throw new InvalidInputException("Value is outside of Chess board");
             }
-            printPossibleMoves(pieceType, chessBoard, cords);
+            chessBoard.printValuesFromList(getPossibleMoves(pieceType, chessBoard, cords));
         }
         catch (ArrayIndexOutOfBoundsException e){
             throw new InvalidInputException("Input type is not valid. Please provide input in the format- [PieceType CellValue]");
@@ -31,28 +35,22 @@ public class ChessBoardApp {
         }
     }
 
-    public static void printPossibleMoves(ChessPiecesEnum pieceType, ChessBoard chessBoard, Coordinate coords) {
+    public static List<String> getPossibleMoves(ChessPiecesEnum pieceType, ChessBoard chessBoard, Coordinate coords) {
         switch (pieceType) {
             case KING:
-                chessBoard.printValuesFromList(new King().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
-                break;
+                return (new King().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
             case PAWN:
-                chessBoard.printValuesFromList(new Pawn().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
-                break;
+                return (new Pawn().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
             case BISHOP:
-                chessBoard.printValuesFromList(new Bishop().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
-                break;
-          /*  case HORSE:
-                chessBoard.printValuesFromList(new Horse().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
-                break;
+                return (new Bishop().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
+            case HORSE:
+                return (new Horse().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
             case ROOK:
-                chessBoard.printValuesFromList(new Rook().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
-                break;
+                return (new Rook().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
             case QUEEN:
-                chessBoard.printValuesFromList(new Queen().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
-                break;*/
+                return (new Queen().getPossibleMovements(chessBoard, coords.getX(), coords.getY()));
             default:
-                throw new RuntimeException("Piece type is not supported");
+                throw new InvalidInputException("Piece type is not supported");
         }
     }
 }

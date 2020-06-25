@@ -1,18 +1,20 @@
 package com.ap.chessboard.chesspieces;
 
 import com.ap.chessboard.ChessBoard;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pawn extends Piece {
+/**
+ * @author amarendra.singh
+ */
+public class Pawn implements Piece {
 
     @Override
    public List<String> getPossibleMovements(ChessBoard chessBoard, int x, int y) {
         // Possible move shift for Pawn (Can move only 1 step at a time, in the forward direction, vertically.
-        //Can also move 1 step forward diagonally)
-        int possibleShiftX[] = { -1, -1, -1};
-        int possibleShiftY[] = { -1, 0, 1};
+        //Can also move 1 step forward diagonally but as Board is empty, this is not possible)
+        int[] possibleShiftX = {-1};
+        int[] possibleShiftY = {0};
 
         List<String> possibleMoves = new ArrayList<>();
 

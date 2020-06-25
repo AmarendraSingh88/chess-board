@@ -4,10 +4,12 @@ import com.ap.chessboard.ChessBoard;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author amarendra.singh
+ */
 public class PawnTests {
     private Pawn pawn;
     private ChessBoard chessBoard;
@@ -26,9 +28,7 @@ public class PawnTests {
     public void getPossibleMovementsForPawn(){
         int pointX = 1;
         int pointY = 6;
-        expectedList.add("F8");
         expectedList.add("G8");
-        expectedList.add("H8");
 
         //actual call
         resultList = pawn.getPossibleMovements(chessBoard,pointX,pointY);

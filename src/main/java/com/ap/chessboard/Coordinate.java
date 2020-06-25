@@ -1,7 +1,11 @@
 package com.ap.chessboard;
 
+/**
+ * @author amarendra.singh
+ */
 public class Coordinate {
-    private int x,y;
+    private int x;
+    private int y;
 
     public Coordinate(int x, int y) {
         this.x = x;
